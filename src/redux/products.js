@@ -23,15 +23,25 @@ export default function productsReducer(state = dataInicial, action) {
 
 // ACTIONS
 
+// obtener productos
 export const getProducts = () => (dispatch) => {
-  try {
-    axios.get("http://localhost:3004/products").then((res) =>
+  axios
+    .get("http://localhost:3004/products")
+    .then((res) =>
       dispatch({
         type: GET_PRODUCTS,
         payload: res.data,
       })
-    );
-  } catch (err) {
-    console.log("ERROR :( ", err);
-  }
+    )
+    .catch((err) => console.log("ERROR :(", err));
+};
+
+// Eliminar un producto
+export const deleteProduct = (id) => {
+  axios
+    .delete(`http://localhost:3004/products/${id}`)
+    .then(() => getProducts())
+    .catch((err) => {
+      console.log("ERROR :( ", err);
+    });
 };
