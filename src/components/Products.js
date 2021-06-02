@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../redux/products";
+import React from "react";
+import { Link } from "react-router-dom";
 import { Loading } from "./Loading";
-import { Modal } from "./Modal";
-import { DeleteConfirm } from "./DeleteConfirm";
 
-export const Products = () => {
-  const [open, setOpen] = useState(false);
-  const [remove, setRemove] = useState(false);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
-
-  const products = useSelector((store) => store.products.array);
+export const Products = (props) => {
+  const products = props.products;
+  const removeProduct = props.removeProduct;
 
   return (
     <section class="text-gray-400 bg-gray-900 body-font">
@@ -23,30 +13,29 @@ export const Products = () => {
       ) : (
         <div class="container px-5 py-24 mx-auto h-full w-screen">
           <div class="flex justify-center text-center w-full mb-20">
-            <button
-              onClick={() => setOpen(!open)}
-              class="flex justify-center items-center p-5 w-9/12 rounded sm:w-1/3 md:1/4 border-white border-2"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                />
-              </svg>
-              Agregar Producto
-            </button>
+            <Link to="/add">
+              <button class="flex justify-center items-center p-5 w-9/12 rounded sm:w-1/3 md:1/4 border-white border-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
+                </svg>
+                Agregar Producto
+              </button>
+            </Link>
           </div>
           <div class="flex flex-wrap -m-4 justify-center sm:justify-start">
             {products.map((product) => (
-              <div key={product.id} class="hover:border-white-2  p-4 lg:w-1/2">
+              <div key={product.id} class="p-4 lg:w-1/2">
                 <div class="h-full w-full flex sm:flex-row  flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                   <img
                     alt="team"
@@ -59,33 +48,40 @@ export const Products = () => {
                     </h2>
                     <h3 class="text-gray-500 mb-3">${product.price}</h3>
                     <p class="mb-4">
-                      {product.description.substring(0, 166)}...
+                      {product.description
+                        ? product.description.substring(0, 166)
+                        : ""}
+                      ...
                     </p>
                     <span class="inline-flex gap-2">
                       {/* boton para modificar datos */}
-                      <button
-                        class="text-gray-500"
-                        onClick={() => setOpen(!open)}
+                      <Link
+                        to={{
+                          pathname: `/edit`,
+                          state: { product: product },
+                        }}
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-6 w-6 hover:text-white"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                          />
-                        </svg>
-                      </button>
+                        <button class="text-gray-500">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 hover:text-white"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                            />
+                          </svg>
+                        </button>
+                      </Link>
                       {/* boton para eliminar producto */}
                       <button
                         class="text-gray-500"
-                        onClick={() => setRemove(!remove)}
+                        onClick={() => removeProduct(product.id)}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -110,8 +106,6 @@ export const Products = () => {
           </div>
         </div>
       )}
-      {open ? <Modal open={open} setOpen={setOpen} /> : null}
-      {remove ? <DeleteConfirm remove={remove} setRemove={setRemove} /> : null}
     </section>
   );
 };

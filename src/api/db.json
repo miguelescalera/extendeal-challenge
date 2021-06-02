@@ -64,13 +64,6 @@
       "imgUrl": "https://tonelprivado.vteximg.com.br/arquivos/ids/174753-445-445/Trumpeter-Chardonnay-750-ml-112647.jpg?v=636337419619900000"
     },
     {
-      "id": 10,
-      "name": "Cuesta Pedro Ximenez",
-      "price": 2900,
-      "description": "",
-      "imgUrl": "https://tonelprivado.vteximg.com.br/arquivos/ids/183200-445-445/701034.jpg?v=637140114464100000"
-    },
-    {
       "id": 11,
       "name": "East Indian Solera CREAM",
       "price": 3100,
@@ -132,6 +125,13 @@
       "price": 600,
       "description": "La expresión más profunda del Terroir. Preparemos las copas!",
       "imgUrl": "https://tonelprivado.vteximg.com.br/arquivos/ids/178587-445-445/Aguijon-De-Abeja.-Rosado.-750-ml.jpg?v=636710679175830000"
+    },
+    {
+      "name": "Vino",
+      "price": "250",
+      "description": "vino de muy buena cosecha, para deleitar en familia",
+      "imgUrl": "https://tonelprivado.vteximg.com.br/arquivos/ids/183200-445-445/701034.jpg?v=637140114464100000",
+      "id": 20
     }
   ]
 }
