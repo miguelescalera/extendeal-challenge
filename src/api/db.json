@@ -120,18 +120,11 @@
       "imgUrl": "https://tonelprivado.vteximg.com.br/arquivos/ids/165295-445-445/Altocedro-750-ml-Rosado-300230.jpg?v=635774868158570000"
     },
     {
-      "id": 19,
       "name": "Aguijon de abeja Rosado",
-      "price": 600,
+      "price": "700",
       "description": "La expresión más profunda del Terroir. Preparemos las copas!",
-      "imgUrl": "https://tonelprivado.vteximg.com.br/arquivos/ids/178587-445-445/Aguijon-De-Abeja.-Rosado.-750-ml.jpg?v=636710679175830000"
-    },
-    {
-      "name": "Vino",
-      "price": "250",
-      "description": "vino de muy buena cosecha, para deleitar en familia",
-      "imgUrl": "https://tonelprivado.vteximg.com.br/arquivos/ids/183200-445-445/701034.jpg?v=637140114464100000",
-      "id": 20
+      "imgUrl": "https://tonelprivado.vteximg.com.br/arquivos/ids/178587-445-445/Aguijon-De-Abeja.-Rosado.-750-ml.jpg?v=636710679175830000",
+      "id": 19
     }
   ]
 }

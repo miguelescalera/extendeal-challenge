@@ -6,6 +6,14 @@ Proyecto creado con create-react-app
 
 En la carpeta Raiz del Proyecto, escribir en la terminal:
 
+### `npm install`
+
+luego ejecutar el comando:
+
+### `npm install -g json-server` (para evitar posibles errores)
+
+y finalmente:
+
 ### `npm start`
 
 Se levantara el Proyecto en: [http://localhost:3000]

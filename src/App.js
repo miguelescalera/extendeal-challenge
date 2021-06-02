@@ -12,33 +12,24 @@ import { AddProduct } from "./components/AddProduct";
 
 export default function App() {
   const [products, setProducts] = useState([]);
-  console.log(products);
+
+  const apiProducts = async () => {
+    const response = await api.get("/products");
+    if (response.data) setProducts(response.data);
+  };
 
   useEffect(() => {
-    const apiProducts = async () => {
-      const response = await api.get("/products");
-      if (response.data) setProducts(response.data);
-    };
     apiProducts();
   }, []);
 
-  // Problema con la actualizacion de datos
   const updateProduct = async (data) => {
-    const response = await api.put(`/products/${data.id}`, data);
-    setProducts(
-      products.map((product) => {
-        return product.id === response.id
-          ? { ...products, product: response.data }
-          : data;
-      })
-    );
-    console.log(products);
+    await api.put(`/products/${data.id}`, data);
+    setProducts(apiProducts());
   };
 
-  // porblema con la carga del producto. no se muestra imagen necesita un refresh
   const addProduct = async (data) => {
-    const response = await api.post("/products", data);
-    setProducts([...products, response]);
+    await api.post("/products", data);
+    setProducts(apiProducts());
   };
 
   const removeProduct = async (id) => {

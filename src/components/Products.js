@@ -13,8 +13,11 @@ export const Products = (props) => {
       ) : (
         <div class="container px-5 py-24 mx-auto h-full w-screen">
           <div class="flex justify-center text-center w-full mb-20">
-            <Link to="/add">
-              <button class="flex justify-center items-center p-5 w-9/12 rounded sm:w-1/3 md:1/4 border-white border-2">
+            <Link
+              to="/add"
+              class=" w-9/12 sm:w-1/3 md:w-1/4 flex justify-center items-center"
+            >
+              <button class="flex justify-center items-center p-5 w-full rounded  border-white border-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6"
